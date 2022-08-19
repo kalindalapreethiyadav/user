@@ -1,5 +1,14 @@
 @Library('roboshop-shared-library@main') _
 
-env.COMPONENT="user"
-env.APP_TYPE="nodejs"
-nodejs()
+pipeline {
+    agent any
+    stages {
+       stage('Lint check') {
+          steps {
+            script{
+              nodejs.lintcheck() 
+            }
+          }
+       }
+    }
+}
